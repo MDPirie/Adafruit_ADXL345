@@ -23,7 +23,7 @@
 
 #include <limits.h>
 #include "Adafruit_ADXL345_U.h"
-#include "Sensor_Registers_Bits.h"
+//#include "Sensor_Registers_Bits.h"
 
 /*================================================================================================
    STATIC MEMBERS
@@ -258,7 +258,7 @@ void Adafruit_ADXL345::toggleStandbyMode( uint8_t state ) {
  *
  * \param state : (required) either ENABLE or DISABLE
  * \param wakeupFreq : (optional, defaults to 1) either 1, 2, 4, or 8 samples per sec. When
- *							  disabling SLEEP MODE the Wake Up bits will be left in there previous values.
+ * disabling SLEEP MODE the Wake Up bits will be left in there previous values.
  * \return void
  *//*---------------------------------------------------------------------------------------------*/
 void Adafruit_ADXL345::toggleSleepMode( uint8_t state, uint8_t wakeupFreq )

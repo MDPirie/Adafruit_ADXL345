@@ -26,7 +26,7 @@
 #include <Adafruit_Sensor.h>
 #include <Wire.h>
 #include <SPI.h>
-#include "Sensor_Registers_Bits.h"
+//#include "Sensor_Registers_Bits.h"
 
 #ifndef __ADAFRUIT_ADXL345_U_H__
 #define __ADAFRUIT_ADXL345_U_H__
@@ -74,6 +74,67 @@
     REGISTERS
     ----------------------------------------------------------------------------------------------*/
     #define ADXL345_MG2G_MULTIPLIER ( 0.004 )  // 4mg per lsb
+
+    #define ADXL_INT1    0
+    #define ADXL_INT2    1
+
+    #define ENABLE  1
+    #define DISABLE 0
+
+    #define ADXL_X_AXIS  0
+    #define ADXL_Y_AXIS  1
+    #define ADXL_Z_AXIS  2
+
+    #define ADXL_FIFO_BYPASS  0
+    #define ADXL_FIFO_FIFO    1
+    #define ADXL_FIFO_STREAM  2
+    #define ADXL_FIFO_TRIGGER 3
+    // INT_ENABLE & INT_MAP & IN_SOURCE register
+    #define ADXL_DATA_READY	 7
+    #define ADXL_SINGLE_TAP	 6
+    #define ADXL_DOUBLE_TAP  5
+    #define ADXL_ACTIVITY    4
+    #define ADXL_INACTIVITY	 3
+    #define ADXL_FREE_FALL   2
+    #define ADXL_WATERMARK   1
+    #define ADXL_OVERRUN     0
+    // POWER_CTL register
+    #define ADXL_LINK        5
+    #define ADXL_AUTO_SLEEP  4
+    #define ADXL_MEASURE     3
+    #define ADXL_SLEEP       2
+    #define ADXL_WAKEUP_D1   1
+    #define ADXL_WAKEUP_D0   0
+    // ACT_INACT_CTL register
+    #define ADXL_ATCITIVITY_ACDC 7
+    #define ADXL_ACT_X_ENABLE    6
+    #define ADXL_ACT_Y_ENABLE    5
+    #define ADXL_ACT_Z_ENABLE    4
+    #define ADXL_INACTIVITY_ACDC 3
+    #define ADXL_INACT_X_ENABLE  2
+    #define ADXL_INACT_Y_ENABLE  1
+    #define ADXL_INACT_Z_ENABLE  0
+    // TAP_AXES register
+    #define ADXL_DBL_TAP_SUPPRESS 3
+    #define ADXL_TAP_X_ENABLE     2
+    #define ADXL_TAP_Y_ENABLE     1
+    #define ADXL_TAP_Z_ENABLE     0
+    // ACT_TAP_STATUS register
+    #define ADXL_ACT_X_SOURCE    6
+    #define ADXL_ACT_Y_SOURCE    5
+    #define ADXL_ACT_Z_SOURCE    4
+    #define ADXL_ASLEEP		     3
+    #define ADXL_TAP_X_SOURCE    2
+    #define ADXL_TAP_Y_SOURCE    1
+    #define ADXL_TAP_Z_SOURCE    0
+    // DATA_FORMAT register
+    #define ADXL_SELF_TEST  7
+    #define ADXL_SPI_3_WIRE 6
+    #define ADXL_INT_INVERT 5
+    #define ADXL_FULL_RES   3
+    #define ADXL_JUSTIFY    2
+    #define ADXL_RANGE_D1   1
+    #define ADXL_RANGE_D2   0
 /*================================================================================================*/
 
 /* Used with register 0x2C (ADXL345_REG_BW_RATE) to set bandwidth */
@@ -105,6 +166,12 @@ typedef enum
 	ADXL345_RANGE_4_G           = 0b01,   // +/- 4g
 	ADXL345_RANGE_2_G           = 0b00    // +/- 2g (default value)
 } range_t;
+
+enum interface_mode
+{
+    MODE_SPI,
+    MODE_I2C,
+};
 
 // CONVENIENCE MACROS
 #define BV( bit )				   ( 1 << bit );
